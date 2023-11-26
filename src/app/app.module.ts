@@ -10,6 +10,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpClientJsonpModule } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
+import { IngredientComponent } from './ingredient/ingredient.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { LoginComponent } from './login/login.component';
     AppComponent,
     UserListComponent,
     UserFormComponent,
-    LoginComponent
+    LoginComponent,
+    IngredientComponent
   ],
   imports: [
     BrowserModule,

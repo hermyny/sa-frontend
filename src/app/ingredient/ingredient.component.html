@@ -1,0 +1,26 @@
+<div class="card my-5">
+    <div class="card-body">
+      <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">name</th>
+            <th scope="col">calorie</th>
+            <th scope="col">quantity</th>
+            <th scope="col">price</th>
+            <th scope="col">type</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let ingredient of ingredients">
+            <td>{{ ingredient.id }}</td>
+            <td>{{ ingredient.name }}</td>
+            <td>{{ ingredient.calorie }}</td>
+            <td>{{ ingredient.quantity }}</td> 
+            <td>{{ ingredient.type }}</td>                          
+ 
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
