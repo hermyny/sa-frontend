@@ -1,0 +1,9 @@
+<p>login works!</p>
+<!-- login.component.html -->
+<div>
+    <button *ngIf="!isLoggedIn" (click)="login()">Login</button>
+    <div *ngIf="isLoggedIn">
+      <button (click)="logout()">Logout</button>
+      <!-- Rest of the component content for authenticated users -->
+    </div>
+  </div>
