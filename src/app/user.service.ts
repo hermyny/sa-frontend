@@ -34,4 +34,14 @@ export class UserService {
     });
     return this.http.post<User>(this.usersUrl + 'inscription', user, { headers: headers });
   }
-}
+
+  public activate(activationData: { [key: string]: string }): Observable<void> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      // Ajoutez d'autres en-têtes selon vos besoins
+    });
+
+    return this.http.post<void>(`${this.usersUrl}activation`, activationData, { headers: headers, withCredentials: true });
+  }
+  }
+
