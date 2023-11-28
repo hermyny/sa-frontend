@@ -1,0 +1,24 @@
+<!-- recipe.component.html -->
+
+<div *ngIf="recipes && recipes.length > 0; else noRecipes">
+    <h2>Liste des Recettes</h2>
+    <ul>
+      <li *ngFor="let recipe of recipes">
+        <div>
+          <img [src]="recipe.image" alt="{{ recipe.name }}" width="100" height="100">
+        </div>
+        <div>
+          <h3>{{ recipe.name }}</h3>
+          <p>{{ recipe.preparation }}</p>
+          <p>Duration: {{ recipe.duration }}</p>
+          <p>Difficulty: {{ recipe.difficulty }}</p>
+          <p>Budget: {{ recipe.budget }}</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+  
+  <ng-template #noRecipes>
+    <p>Aucune recette disponible pour le moment.</p>
+  </ng-template>
+  

@@ -12,18 +12,18 @@ export class UserService {
   private usersUrl: string;
 
   constructor(private http: HttpClient, private authService: AuthService) { 
-    this.usersUrl = 'http://localhost:8080/api/user/'
+    this.usersUrl = 'http://localhost:8080/api/'
 
   }
   public findAll(): Observable<User[]> {
-    const authToken = this.authService.getAccessToken();
+    //const authToken = this.authService.getAccessToken();
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       // 'Authorization': `Bearer ${authToken}`,
       // Ajoutez d'autres en-têtes selon vos besoins
     });
     console.log(headers);
-    return this.http.get<User[]>(this.usersUrl + 'users',{headers:headers});
+    return this.http.get<User[]>(this.usersUrl + 'user/users',{headers:headers});
   }
 
   public save(user: User) {
@@ -32,7 +32,7 @@ export class UserService {
       // 'Authorization': `Bearer ${authToken}`,
       // Ajoutez d'autres en-têtes selon vos besoins
     });
-    return this.http.post<User>(this.usersUrl + 'inscription', user, { headers: headers });
+    return this.http.post<User>(this.usersUrl + 'user/inscription', user, { headers: headers });
   }
 
   public activate(activationData: { [key: string]: string }): Observable<void> {
@@ -41,7 +41,7 @@ export class UserService {
       // Ajoutez d'autres en-têtes selon vos besoins
     });
 
-    return this.http.post<void>(`${this.usersUrl}activation`, activationData, { headers: headers, withCredentials: true });
+    return this.http.post<void>(`${this.usersUrl}user/activation`, activationData, { headers: headers, withCredentials: true });
   }
   }
 
