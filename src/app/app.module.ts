@@ -5,12 +5,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { UserFormComponent } from './user-form/user-form.component';
-import { UserService } from './user.service';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpClientJsonpModule } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
 import { IngredientComponent } from './ingredient/ingredient.component';
+import { RecipeComponent } from './recipe/recipe.component';
 
 
 @NgModule({
@@ -19,7 +19,8 @@ import { IngredientComponent } from './ingredient/ingredient.component';
     UserListComponent,
     UserFormComponent,
     LoginComponent,
-    IngredientComponent
+    IngredientComponent,
+    RecipeComponent
   ],
   imports: [
     BrowserModule,

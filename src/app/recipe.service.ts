@@ -1,61 +1,63 @@
-// ingredient.service.ts
+
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpClientModule } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Ingredient } from './ingredient';
+import { Recipe } from './recipe';
+
+
 @Injectable({
   providedIn: 'root'
 })
-export class IngredientService {
+
+export class RecipeService {
 
   private apiUrl = 'http://localhost:8080/api/'; 
 
   constructor(private http: HttpClient) { }
 
-  create(ingredient: Ingredient): Observable<void> {
+  createRecipe(recipe: Recipe): Observable<void> {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       // 'Authorization': `Bearer ${authToken}`,
       // Ajoutez d'autres en-têtes selon vos besoins
     });
-    
-    return this.http.post<void>(`${this.apiUrl}ingredient`, ingredient,{headers:headers});
+    return this.http.post<void>(`${this.apiUrl}recipe/create`, recipe, {headers:headers});
   }
 
-  search(): Observable<Ingredient[]> {
+  getRecipes(): Observable<Recipe[]> {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       // 'Authorization': `Bearer ${authToken}`,
       // Ajoutez d'autres en-têtes selon vos besoins
     });
-    return this.http.get<Ingredient[]>(this.apiUrl + "ingredient/read", {headers:headers});
+    return this.http.get<Recipe[]>(`${this.apiUrl}recipe/list`, {headers:headers});
   }
 
-  readOrCreateById(id: number): Observable<Ingredient> {
+  getRecipeById(id: number): Observable<Recipe> {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       // 'Authorization': `Bearer ${authToken}`,
       // Ajoutez d'autres en-têtes selon vos besoins
     });
-    return this.http.get<Ingredient>(`${this.apiUrl}ingredient/read/${id}`, {headers:headers});
+    return this.http.get<Recipe>(`${this.apiUrl}recipe/read/${id}`, {headers:headers});
   }
 
-  deleteIngredient(id: number): Observable<void> {
+  updateRecipe(id: number, recipe: Recipe): Observable<void> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      // 'Authorization': `Bearer ${authToken}`,
+      // Ajoutez d'autres en-têtes selon vos besoins
+    });
+    return this.http.put<void>(`${this.apiUrl}recipe/update/${id}`, recipe, {headers:headers});
+  }
+
+  deleteRecipe(id: number): Observable<void> {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       // 'Authorization': `Bearer ${authToken}`,
       // Ajoutez d'autres en-têtes selon vos besoins
     });
     return this.http.delete<void>(`${this.apiUrl}/${id}`, {headers:headers});
-  }
-
-  updateIngredient(id: number, ingredient: Ingredient): Observable<void> {
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      // 'Authorization': `Bearer ${authToken}`,
-      // Ajoutez d'autres en-têtes selon vos besoins
-    });
-    return this.http.put<void>(`${this.apiUrl}ingredient/update/${id}`, ingredient, {headers:headers});
   }
 }
 
