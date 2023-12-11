@@ -59,5 +59,15 @@ export class RecipeService {
     });
     return this.http.delete<void>(`${this.apiUrl}/${id}`, {headers:headers});
   }
+
+
+  calculateCaloriesForRecipes(recipe:Recipe): Observable<number> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      // 'Authorization': `Bearer ${authToken}`,
+      // Ajoutez d'autres en-têtes selon vos besoins
+    });
+    return this.http.post<number>(`${this.apiUrl}recipe/calorie`, {headers:headers});
 }
 
+}

@@ -4,4 +4,7 @@ export class Ingredient {
     calorie?:number;
     quantity?: number;
     type?:string;
+
+
+   
 }
