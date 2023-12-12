@@ -11,6 +11,7 @@ import { HttpClientJsonpModule } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
 import { IngredientComponent } from './ingredient/ingredient.component';
 import { RecipeComponent } from './recipe/recipe.component';
+import { CountryComponent } from './country/country.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { RecipeComponent } from './recipe/recipe.component';
     UserFormComponent,
     LoginComponent,
     IngredientComponent,
-    RecipeComponent
+    RecipeComponent,
+    CountryComponent
   ],
   imports: [
     BrowserModule,

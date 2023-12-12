@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { Recipe } from '../recipe';
+import { Ingredient } from '../ingredient';
 import { RecipeService } from '../recipe.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-recipe',
@@ -53,6 +55,26 @@ export class RecipeComponent {
       error => console.error('Erreur lors de la suppression de la recette :', error)
     );
   }
+  calculateCaloriesForRecipes(recipe: Recipe): void {
+    this.recipeService.calculateCaloriesForRecipes(recipe).subscribe(
+      calories => {
+        console.log('Total calorique calculé avec succès :', calories);
+        const totalCalories = calories;
+        console.log('Total calorique de votre recette :', totalCalories);
+      },
+      error => console.error('Erreur lors du calcul des calories :', error)
+    );
 
-}
+  }
+
+  calculateTotalCalories(ingredients: Ingredient[]): number {
+    if (!ingredients || ingredients.length === 0) {
+      return 0; 
+    }
+
+    return ingredients.reduce((totalCalories, ingredient) => totalCalories + (ingredient.calorie || 0), 0);
+  }
+  }
+ 
+
 
